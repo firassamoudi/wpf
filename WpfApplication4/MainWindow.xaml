@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApplication4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication4"
+        mc:Ignorable="d"
+        Title="Départements" Height="400" Width="600">
+    <DataGrid x:Name="DepartementsGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="0,0,-0.4,-29.6">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Id" Binding="{Binding IdDept}"/>
+            <DataGridTextColumn Header="Nom Departement" Binding="{Binding nomDept}"/>
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Action"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.HeaderTemplate>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="InsertBtn" Content="Ajouter" Click="AddDep"/>
+                            <Button x:Name="updateBtn" Content="Modifer" Click="openUpDep"/>
+                            <Button x:Name="deleteBtn" Content="supprimer" Click="deleteDep"/>
+                            <Button x:Name="AddEmpBtn" Content="List Employee" Click="AddEmp"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+        
+    </DataGrid>
+</Window>

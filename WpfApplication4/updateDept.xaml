@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfApplication4.updateDept"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication4"
+        mc:Ignorable="d"
+        Title="updateDept" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="button" Content="mettre a jour Departement" HorizontalAlignment="Left" Margin="73,197,0,0" VerticalAlignment="Top" Width="163" Click="updDep"/>
+        <Label x:Name="label" Content="Nom Département" HorizontalAlignment="Left" Margin="18,66,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="nomDept" HorizontalAlignment="Left" Height="23" Margin="141,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

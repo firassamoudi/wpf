@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="test2020ModelStoreContainer" CdmEntityContainer="test2020Entities1">
+    <EntitySetMapping Name="Departements">
+      <EntityTypeMapping TypeName="test2020Model.Departements">
+        <MappingFragment StoreEntitySet="Departements">
+          <ScalarProperty Name="IdDept" ColumnName="IdDept" />
+          <ScalarProperty Name="nomDept" ColumnName="nomDept" />
+          <ScalarProperty Name="dateModificationManager" ColumnName="dateModificationManager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="test2020Model.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="IdEmp" ColumnName="IdEmp" />
+          <ScalarProperty Name="idDept" ColumnName="idDept" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="dateDebut" ColumnName="dateDebut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

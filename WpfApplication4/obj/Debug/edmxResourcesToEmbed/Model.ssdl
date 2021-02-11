@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="test2020Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Departements">
+    <Key>
+      <PropertyRef Name="IdDept" />
+    </Key>
+    <Property Name="IdDept" Type="int" Nullable="false" />
+    <Property Name="nomDept" Type="nvarchar" MaxLength="50" />
+    <Property Name="dateModificationManager" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="IdEmp" />
+    </Key>
+    <Property Name="IdEmp" Type="int" Nullable="false" />
+    <Property Name="idDept" Type="int" />
+    <Property Name="nom" Type="nvarchar" MaxLength="50" />
+    <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+    <Property Name="dateDebut" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Employees_Departements">
+    <End Role="Departements" Type="Self.Departements" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departements">
+        <PropertyRef Name="IdDept" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="idDept" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="test2020ModelStoreContainer">
+    <EntitySet Name="Departements" EntityType="Self.Departements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employees_Departements" Association="Self.FK_Employees_Departements">
+      <End Role="Departements" EntitySet="Departements" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

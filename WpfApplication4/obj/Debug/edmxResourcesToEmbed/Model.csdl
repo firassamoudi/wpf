@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="test2020Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Departements">
+    <Key>
+      <PropertyRef Name="IdDept" />
+    </Key>
+    <Property Name="IdDept" Type="Int32" Nullable="false" />
+    <Property Name="nomDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateModificationManager" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departements" FromRole="Departements" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="IdEmp" />
+    </Key>
+    <Property Name="IdEmp" Type="Int32" Nullable="false" />
+    <Property Name="idDept" Type="Int32" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateDebut" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Departements" Relationship="Self.FK_Employees_Departements" FromRole="Employees" ToRole="Departements" />
+  </EntityType>
+  <Association Name="FK_Employees_Departements">
+    <End Role="Departements" Type="Self.Departements" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departements">
+        <PropertyRef Name="IdDept" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="idDept" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="test2020Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departements" EntityType="Self.Departements" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <AssociationSet Name="FK_Employees_Departements" Association="Self.FK_Employees_Departements">
+      <End Role="Departements" EntitySet="Departements" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
